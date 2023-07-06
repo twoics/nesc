@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from ..models.m2m import Article, Publication
-from serializer_service.core.services import SerializerCreateService
+from nesc.nesc.service import SerializerCreateService
 
 
 class PublicationSerializer(serializers.ModelSerializer):
@@ -38,4 +38,3 @@ class ArticleSerializer(serializers.ModelSerializer):
             parent_instance=current_instance
         )
         return current_instance
-
