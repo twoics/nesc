@@ -12,7 +12,7 @@ class Article(models.Model):
     headline = models.CharField(max_length=100)
     publications = models.ManyToManyField(
         Publication,
-        related_name="publications"
+        related_name="articles"
     )
 
     def __str__(self):
