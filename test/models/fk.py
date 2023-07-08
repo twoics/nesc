@@ -19,7 +19,8 @@ class News(models.Model):
     )
     reporter = models.ForeignKey(
         Reporter,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="news"
     )
 
     def __str__(self):
