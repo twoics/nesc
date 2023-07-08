@@ -24,8 +24,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'place',
-            'serves_hot_dogs'
-            'serves_pizza'
+            'serves_hot_dogs',
+            'serves_pizza',
         )
 
     def create(self, validated_data):

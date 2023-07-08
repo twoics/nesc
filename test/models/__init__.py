@@ -1,3 +1,3 @@
 from .m2m import Article, Publication
 from .fk import News, Reporter
-from .o2o import Place, Restaurant
+from .o2o import RestaurantDirector, Restaurant
