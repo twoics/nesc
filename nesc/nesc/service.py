@@ -8,7 +8,9 @@ class SerializerCreateService:
         self._child_fields = child_fields or []
         self._fk_fields = fk_fields or []
         self._m2m_fields = m2m_fields or []
-        for field in self._child_fields:
+
+        poped_fields = self._m2m_fields + self._child_fields
+        for field in poped_fields:
             self._validated_data.pop(field, None)
 
     @staticmethod
