@@ -67,7 +67,8 @@ class SerializerCreateService:
                 }
                 nested_serializer = serializer_class(data=raw_data, context=nested_context)
                 nested_serializer.is_valid(raise_exception=True)
-                nested_serializer.save(**{related_name: parent_instance})
+                instance = nested_serializer.save(**{related_name: parent_instance})
+                self._validated_data[field_name] = instance
 
     def create_fk_instances(self):
         context = self._serializer.context
