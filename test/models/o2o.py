@@ -17,7 +17,6 @@ class Restaurant(models.Model):
     place = models.OneToOneField(
         Place,
         on_delete=models.CASCADE,
-        primary_key=True,
         related_name="restaurant"
     )
     serves_hot_dogs = models.BooleanField(
