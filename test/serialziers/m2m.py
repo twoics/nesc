@@ -27,7 +27,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        self.context['raw_data'] = validated_data.copy()
         validated_data.pop('publications')
 
         current_instance = super().create(validated_data)
