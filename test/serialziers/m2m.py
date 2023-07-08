@@ -27,10 +27,8 @@ class ArticleSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        validated_data.pop('publications')
-
-        current_instance = super().create(validated_data)
         service = SerializerCreateService(self, validated_data, m2m_fields=['publications'])
+        current_instance = super().create(validated_data)
 
         service.create_m2m_instances(
             related_name='publications',
