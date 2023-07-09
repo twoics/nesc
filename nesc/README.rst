@@ -60,7 +60,6 @@ Many to many case
             current_instance = super().create(validated_data)
 
             service.create_m2m_instances(
-                related_name='publications',
                 parent_instance=current_instance
             )
             return current_instance
