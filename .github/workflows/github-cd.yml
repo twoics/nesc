@@ -1,0 +1,17 @@
+name: NESCS CD
+
+on:
+  workflow_run:
+    workflows: [ workflow1 ]
+    types:
+      - completed
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: |
+          echo "Hello world 👋"
