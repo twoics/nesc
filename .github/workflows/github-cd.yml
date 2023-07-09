@@ -5,7 +5,7 @@ on:
     workflows: [ workflow1 ]
     types:
       - completed
-  push:
+  pull_request:
     branches: [ main ]
 
 jobs:
