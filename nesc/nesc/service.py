@@ -45,7 +45,12 @@ class SerializerCreateService:
             return [data]
         return data
 
-    def create_child_instances(self, parent_instance):
+    def create_child_instances(self, parent_instance) -> None:
+        """
+        Создание объектов в случае отношения one to one
+        :param parent_instance: Родительский объект, с котором необходимо связать созданные объекты
+        :return: None, Созданные объекты будут помещены в validated_data
+        """
         context = self._serializer.context
         for field_name, field_type in self._serializer.fields.items():
             if field_name not in self._child_fields:
@@ -70,7 +75,11 @@ class SerializerCreateService:
                 instance = nested_serializer.save(**{related_name: parent_instance})
                 self._validated_data[field_name] = instance
 
-    def create_fk_instances(self):
+    def create_fk_instances(self) -> None:
+        """
+        Создание объектов в случае отношения foreign key
+        :return: None, Созданные объекты будут помещены в validated_data
+        """
         context = self._serializer.context
         for field_name, field_type in self._serializer.fields.items():
             if field_name not in self._fk_fields:
@@ -93,7 +102,12 @@ class SerializerCreateService:
             instance = nested_serializer.save()
             self._validated_data[field_name] = instance
 
-    def create_m2m_instances(self, related_name: str, parent_instance):
+    def create_m2m_instances(self, parent_instance) -> None:
+        """
+        Создание объектов в случае отношения many to many
+        :param parent_instance: Родительский объект, с которым необходимо связать созданные объекты
+        :return: None, Созданные объекты будут помещены в validated_data
+        """
         context = self._serializer.context
         for field_name, field_type in self._serializer.fields.items():
             if field_name not in self._m2m_fields:
@@ -105,7 +119,7 @@ class SerializerCreateService:
             if len(raw_data) < 1:
                 continue
 
-            related_manager = getattr(parent_instance, related_name)
+            related_manager = getattr(parent_instance, field_name)
             if related_manager.all().exists():
                 self.delete_related_instances_by_field_name(parent_instance, field_name)
 
