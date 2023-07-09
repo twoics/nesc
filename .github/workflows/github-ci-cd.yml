@@ -12,7 +12,5 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-      - run: cd ..
-      - run: cd ..
       - run: python manage.py test
 
