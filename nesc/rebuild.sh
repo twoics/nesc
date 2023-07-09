@@ -5,4 +5,4 @@ cd "$parent_path" || exit
 python nesc/setup.py sdist
 python nesc/setup.py bdist_wheel
 
-twine nesc/check dist/*
+twine check nesc/dist/*
