@@ -2,4 +2,4 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit ; pwd -P )
 cd "$parent_path" || exit
 
-twine upload --repository pypi dist/*
+twine upload --repository pypi nesc/dist/*

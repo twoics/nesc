@@ -2,14 +2,7 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit ; pwd -P )
 cd "$parent_path" || exit
 
-ls -a
 python nesc/setup.py sdist
+python nesc/setup.py bdist_wheel
 
-#rm -rf build/
-#rm -rf dist/
-#rm -rf serializer_service.egg-info/
-#
-#python setup.py sdist
-#python setup.py bdist_wheel
-#
-#twine check dist/*
+twine nesc/check dist/*
