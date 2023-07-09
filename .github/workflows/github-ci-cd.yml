@@ -43,4 +43,5 @@ jobs:
           sh nesc/rebuild.sh
       - name: Deploy package
         run: |
-          sh nesc/reupload.sh
+          cd nesc
+          sh reupload.sh
