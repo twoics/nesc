@@ -1,3 +1,7 @@
+#!/bin/bash
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit ; pwd -P )
+cd "$parent_path" || exit
+
 rm -rf build/
 rm -rf dist/
 rm -rf serializer_service.egg-info/
